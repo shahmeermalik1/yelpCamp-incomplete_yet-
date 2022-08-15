@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Campground</title>
+
+</head>
+<!-- --------------------------------------------- -->
+<body>
+    <% layout('boilerplate.ejs') %> 
+    <div class="row">
+        <div class="col-6 offset-3">
+            <h1>Edit Campground</h1>
+            <form action="/campgrounds/<%=campgroundInfo._id%>?_method=PUT" method="POST" novalidate class="validated-form">
+    <div>
+        <label class="form-label" for="title">Title:</label>
+        <input class="form-control" type="text" id="title" name="campground[title]" value="<%= campgroundInfo.title %>" required>
+    </div>
+    <div>
+        <label class="form-label" for="location">Location:</label>
+        <input value="<%= campgroundInfo.location %>" class="form-control" type="text" id="location" name="campground[location]" required>
+    </div>
+    <div>
+        <label class="form-label" for="image">Image Url:</label>
+        <input value="<%= campgroundInfo.image %>" class="form-control" type="text" id="image" name="campground[image]" required>
+    </div>
+    <div>
+        <label class="form-label" for="description">description:</label>
+        <textarea <%= campgroundInfo.description %> class="form-control" type="text" id="description" name="campground[description]"></textarea>
+    </div>
+
+    <label class="form-label" for="price">price:</label>
+    <div class="input-group mb-3 ">
+        <div class="input-group-prepend">
+          <span class="input-group-text">$</span>
+        </div>
+        <input id="price" value="<%= campgroundInfo.price %>" name="campground[price]" type="text" class="form-control" aria-label="Amount (to the nearest dollar)" required>
+        <div class="input-group-append">
+          <span class="input-group-text">.00</span>
+        </div>
+      </div>
+
+    <div class="mt-3">
+        <button class="btn btn-success">Edit Campground</button>
+    </div>
+    </form>
+        </div>
+    </div>
+</body>
+</html>
